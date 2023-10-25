@@ -15,7 +15,7 @@ class DataIngestion:
     #     if not os.path.exists(self.config.local_data_file):
     #         print(self.config.source_URL)
     #         filename, headers = request.urlretrieve(
-    #             url = self.config.source_URL,                               # Thw link gave me an error because my repo was private
+    #             url = self.config.source_URL,                               # Will activate this when storind data outside
     #             filename = self.config.local_data_file
     #         )
 
