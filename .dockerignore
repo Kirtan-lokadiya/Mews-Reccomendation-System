@@ -1,0 +1,7 @@
+# We need to Ignore the Virtual Enviroment, otherwise this will aslo be 
+#  copied to docker images and then the image would be uneccessaarily large
+
+#  also I am ignoring Docker file as well, so as not to expose the Docker layes structure
+
+venv
+Dockerfile
