@@ -1,4 +1,4 @@
-# Mews-Reccomendation-System
+# News-Reccomendation-System
 
 I have made two model for reccomendation
 1) First one does reccomendation based on the user's interaction history
