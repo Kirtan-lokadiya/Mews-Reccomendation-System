@@ -5,6 +5,7 @@ ktrain
 scikit-learn
 torch
 pytorch_lightning
+tensorflow
 streamlit
 mlflow == 2.2.2
 dvc

@@ -1,0 +1,2 @@
+Behaviour_model:
+  batch_size: 1024

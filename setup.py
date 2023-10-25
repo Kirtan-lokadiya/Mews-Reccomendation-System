@@ -7,7 +7,7 @@ __version__ = '0.0.0'
 
 REPO_NAME = 'News_Reccomendation_System'
 AUTHOR_USER_NAME = 'swarajbari18'
-SRC_REPO = 'portfolio_project_one'
+SRC_REPO = 'News_Reccomendation_System'
 AUTHOR_EMAIL = '007swarajbari@gmail.com'
 
 
