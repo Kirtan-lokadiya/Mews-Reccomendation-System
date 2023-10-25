@@ -11,3 +11,6 @@ which would be seperated by categories.
 whichever news user will click on , this data will be saved to further train the user history model
 after reading the news, then user will get further reccomendations based on the content of the news ----> The Second model
 
+We will have to call the prediction API accordingly,
+the prediction APIs are present in :
+src/News_Reccomendation_System/pipeline/step4_prediction.py

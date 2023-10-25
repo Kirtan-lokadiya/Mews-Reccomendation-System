@@ -60,21 +60,24 @@ class Content_Based_PredictionAPI:
             print(" ".join(doc['text'].split()))
     
 
+if __name__ == "__main":
 
-obj = User_Based_PredictionAPI()
-ind2item, userIdx, item_id = obj.input_user_id(2350)  # for now
-news = obj.get_news()
-df = obj.predict(news= news,
-                 ind2item= ind2item,
-                 userIdx= userIdx,
-                 item_id= item_id)
+    '''Test APIs'''
 
-print(df)
+    obj = User_Based_PredictionAPI()
+    ind2item, userIdx, item_id = obj.input_user_id(2350)  # for now
+    news = obj.get_news()
+    df = obj.predict(news= news,
+                    ind2item= ind2item,
+                    userIdx= userIdx,
+                    item_id= item_id)
+
+    print(df)
 
 
-# obj2 = Content_Based_PredictionAPI()
-# news = obj2.input(news = '''
-# An off-duty pilot is accused of trying to shut down the engines of a Horizon Air jet in midflight
-# ''')
-# obj2.predict(news)
+    obj2 = Content_Based_PredictionAPI()
+    news = obj2.input(news = '''
+    An off-duty pilot is accused of trying to shut down the engines of a Horizon Air jet in midflight
+    ''')
+    obj2.predict(news)
 
