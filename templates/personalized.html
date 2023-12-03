@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Newzz - your personalized news solution{% endblock %}
+
+{% block content %}
+    <h1>Welcome, {{ username }}!</h1>
+    <p>Your Personalized Newzz</p>
+    {% if personalized_news %}
+        {% for news in personalized_news %}
+            <div class="news-card">
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.abstract }}</p>
+                <a href="{{ url_for('full_news', news_id=news.id) }}">Read more</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No news here</p>
+    {% endif %}
+
+    <div class="navigation-buttons">
+        <a href="{{ url_for('home') }}">Trending</a>
+    </div>
+{% endblock %}

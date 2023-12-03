@@ -1,0 +1,40 @@
+<!DOCTYPE html>  
+<!-- this is to tell the browsers which page to render correctly -->
+<html lang="en">
+<!-- root of this page -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1,0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>{% block title %}Newzz{% endblock %}</title>
+</head>
+
+
+<body>
+
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('category', category='lifestyle') }}">Lifestyle</a></li>
+            <li><a href="{{ url_for('category', category='health') }}">Health</a></li>
+        </ul>
+
+        <div class="login-button">
+            {%if user_logged_in %}
+                <a href="{{ url_for('personalized', username=current_user) }}" class="user-button">{{ current_user }}</a>
+            {% else %}
+            <a href="{{ url_for('login', username=current_user) }}" class="login-button">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+
+</body>
+
+
+</html>

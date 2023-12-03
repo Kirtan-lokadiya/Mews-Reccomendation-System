@@ -1,0 +1,36 @@
+.news-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.news-card h2 {
+    color: #333;
+}
+
+.news-card a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.full-news-content {
+    margin-bottom: 20px;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-buttons a {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.navigation-buttons a:hover {
+    background-color: #0056b3;
+}

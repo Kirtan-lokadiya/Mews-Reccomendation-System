@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ category|capitalize }} - Trending{% endblock %}
+
+{% block content %}
+    <h1>{{ category|capitalize }} Newzz</h1>
+
+    {% if category_news %}
+        {% for news in category_news %}
+            <div class="news-card">
+                <h2>{{ news.title}}</h2>
+                <p>{{ news.abstract }}</p>
+            </div>
+        {% endfor %}
+
+    {% else %}
+            <p>No {{ category|capitalize }} News availiable</p>
+    {% endif %}
+{% endblock %}
+
