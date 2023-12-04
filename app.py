@@ -20,18 +20,21 @@ app.secret_key = '11111'
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', '') )
 
 @app.route('/category/<category>')
 def category(category):
+    if session.get('user_logged_in', False):
+        personalized_news_data = get_personalized_news(session.username, category)
+        return render_template('category.html', category=category, category_news= personalized_news_data, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''))
     category_news_data = get_category_news_api(category)
-    return render_template('category.html', category=category, category_news= category_news_data)
+    return render_template('category.html', category=category, category_news= category_news_data, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''))
 
 @app.route('/full_news/<news_id>')
 def full_news(news_id:str):
     full_news_data = get_full_news(news_id)
     content_recommendation_news = get_content_reccomendation(full_news_data.abstract)
-    return render_template('full_news.html', full_news=full_news_data, news_id=news_id, content_recc=content_recommendation_news)
+    return render_template('full_news.html', full_news=full_news_data, news_id=news_id, content_recc=content_recommendation_news, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''))
 
 def get_next_news_id(current_news_id):
     # implement logic
@@ -56,7 +59,7 @@ def login():
             error_message = 'Please check your login credentials'
             return render_template('login.html', error_message=error_message)
     
-    return render_template('login.html')
+    return render_template('login.html', user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''))
 
 @app.route('/logout')
 def logout():
@@ -64,10 +67,10 @@ def logout():
     session.pop('current_user', None)
     return redirect(url_for('home'))
 
-@app.route('/personalized/<username>')
-def personalized(username):
-    personalized_news_data = get_personalized_news(username)
-    return render_template('personalized.html', username=username, personalized_news=personalized_news_data)
+@app.route('/personalized/<int:username>')
+def personalized(username, category=None):
+    personalized_news_data = get_personalized_news(username, category)
+    return render_template('personalized.html', username=username, personalized_news=personalized_news_data, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''), category=category)
 
 
 

@@ -113,13 +113,7 @@ class ModelTrainer:
 
     def model_training_2(self):
         df = pd.read_csv(self.config.news, sep= '\t',
-                         names=["itemId","category",
-                                "subcategory",
-                                "title",
-                                "abstract",
-                                "url",
-                                "title_entities",
-                                "abstract_entities"])
+                         names=self.config.col_name)
 
         df.dropna(inplace= True)
         df.drop_duplicates(inplace= True)

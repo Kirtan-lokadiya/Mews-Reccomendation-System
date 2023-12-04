@@ -3,8 +3,9 @@ from News_Reccomendation_System.utils.common import read_yaml, create_directorie
 
 from News_Reccomendation_System.entity.config_entity import (DataIngestionConfig,
                                                         DataTransformationConfig,
-                                                        ModelTrainerConfig)
-                                                        # ModelEvaluationConfig) 
+                                                        ModelTrainerConfig,
+                                                        TrendingAPIConfig)
+                                                        
 
 #  Updating Configuratiom Manager inside src/ config
 
@@ -48,7 +49,8 @@ class ConfigurationManager:
         data_transformation_configuration = DataTransformationConfig(
             root_dir= config.root_dir,
             data_path_usr= config.data_path_usr,
-            data_path_news= config.data_path_news
+            data_path_news= config.data_path_news,
+            col_name= config.col_name
         )
 
         return data_transformation_configuration
@@ -68,6 +70,7 @@ class ConfigurationManager:
             model_name= config.model_name,
             model_content= config.model_content,
             news= config.news,
+            col_name= config.col_name,
             ind2user= config.ind2user,
             ind2item= config.ind2item,
             batch_size= params.batch_size
@@ -75,3 +78,18 @@ class ConfigurationManager:
         )
 
         return model_trainer_config
+    
+
+    def get_trending_config(self) -> TrendingAPIConfig:
+
+        config = self.config.trending_api
+
+        trending_api_configuration = TrendingAPIConfig(
+            training_data= config.training_data,
+            validation_data= config.validation_data,
+            news_data= config.news_data,
+            col_name= config.col_name,
+            item2ind_json= config.item2ind_json
+        )
+
+        return trending_api_configuration

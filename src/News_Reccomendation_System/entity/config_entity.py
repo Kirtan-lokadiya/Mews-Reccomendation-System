@@ -13,6 +13,7 @@ class DataTransformationConfig:
     root_dir: Path
     data_path_usr: Path
     data_path_news: Path
+    col_name: list
 
 
 @dataclass(frozen=True)
@@ -21,8 +22,18 @@ class ModelTrainerConfig:
     train_data_path: Path
     test_data_path: Path
     news: Path
+    col_name: list
     model_name: str
     model_content: str
     ind2user: Path
     ind2item: Path
     batch_size: float
+
+
+@dataclass(frozen=True)
+class TrendingAPIConfig:
+    training_data: Path
+    validation_data: Path
+    news_data: Path
+    col_name: list
+    item2ind_json: Path

@@ -11,7 +11,7 @@ logger.info("Welcome to   SWARAJ BARI' s  News Reccomendation System Project")
 from News_Reccomendation_System.pipeline.step1_data_ingestion import run_data_ingestion
 from News_Reccomendation_System.pipeline.step2_data_transformation import run_data_transformation
 from News_Reccomendation_System.pipeline.step3_model_training import run_model_trainer
-# from portfolio_project_one.pipeline.step5_model_evaluation import run_model_evaluator
+
 
 
 
@@ -19,4 +19,3 @@ from News_Reccomendation_System.pipeline.step3_model_training import run_model_t
 run_data_ingestion()  # run data ingestion pipeline
 run_data_transformation()  # run data transformation pipeline
 run_model_trainer()  # run model trainer
-# run_model_evaluator()  # run model evaluation pipeline

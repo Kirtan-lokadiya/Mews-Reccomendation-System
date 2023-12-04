@@ -26,13 +26,7 @@ class DataTransformtion:
     def news_data(self):
         df = pd.read_csv(self.config.data_path_news,
                          sep='\t',
-                         names=["itemId",
-                                "category",
-                                "subcategory",
-                                "title","abstract",
-                                "url",
-                                "title_entities",
-                                "abstract_entities"]
+                         names=self.config.col_name
                                 )
         return df
     
@@ -45,6 +39,7 @@ class DataTransformtion:
         print(f"We have {len(user2ind)} unique users in the dataset")
 
         save_json(path= Path(os.path.join(self.config.root_dir, 'ind2user.json')), data= ind2user)
+        save_json(path= Path(os.path.join(self.config.root_dir, 'user2ind.json')), data= user2ind)
         # Create a new column with userIdx:
         raw_behaviour['userIdx'] = raw_behaviour['userId'].map(lambda x: user2ind.get(x,0))
                 
@@ -55,6 +50,7 @@ class DataTransformtion:
         item2ind = {itemid : idx for idx, itemid in ind2item.items()}
 
         save_json(path= Path(os.path.join(self.config.root_dir, 'ind2uitem.json')), data= ind2item)
+        save_json(path= Path(os.path.join(self.config.root_dir, 'item2ind.json')), data= item2ind)
 
         return item2ind
     

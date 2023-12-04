@@ -21,10 +21,10 @@
         </ul>
 
         <div class="login-button">
-            {%if user_logged_in %}
+            {%if session.user_logged_in  %}
                 <a href="{{ url_for('personalized', username=current_user) }}" class="user-button">{{ current_user }}</a>
             {% else %}
-            <a href="{{ url_for('login', username=current_user) }}" class="login-button">Login</a>
+                <a href="{{ url_for('login', username=current_user) }}" class="login-button">Login</a>
             {% endif %}
         </div>
     </nav>
