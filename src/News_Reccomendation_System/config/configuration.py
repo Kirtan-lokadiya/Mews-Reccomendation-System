@@ -4,7 +4,8 @@ from News_Reccomendation_System.utils.common import read_yaml, create_directorie
 from News_Reccomendation_System.entity.config_entity import (DataIngestionConfig,
                                                         DataTransformationConfig,
                                                         ModelTrainerConfig,
-                                                        TrendingAPIConfig)
+                                                        TrendingAPIConfig,
+                                                        FullNewsConfig)
                                                         
 
 #  Updating Configuratiom Manager inside src/ config
@@ -93,3 +94,15 @@ class ConfigurationManager:
         )
 
         return trending_api_configuration
+    
+    def get_fullnews_config(self) -> FullNewsConfig:
+
+        config = self.config.fullnews
+
+        fullnews_configuration = FullNewsConfig(
+            news_data= config.news_data,
+            col_name= config.col_name,
+            item2ind_json= config.item2ind_json
+        )
+
+        return fullnews_configuration

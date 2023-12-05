@@ -1,17 +1,21 @@
 from flask import Flask, render_template, url_for, request, redirect, session
 
-def get_category_news_api(category):
-    return
-def get_full_news(category):
-    return
-def get_personalized_news(username):
-    return
+from News_Reccomendation_System.pipeline.step4_prediction import user_based_rec_api, content_based_rec_api
+from News_Reccomendation_System.pipeline.step5_trending_api import trending_api
+from News_Reccomendation_System.pipeline.step6_fullnews_api import get_fullnews_api
 
-def get_content_reccomendation(abstract):
-    return
+# def trending_api(category):
+#     return
+# def get_fullnews_api(category):
+#     return
+# def user_based_rec_api(username):
+#     return
+
+# def content_based_rec_api(abstract):
+#     return
 
 
-users = {'user1':'12345', 'user2':'12345'}
+users = {'U8125':'12345', 'user2':'12345'}
 
 
 
@@ -20,29 +24,23 @@ app.secret_key = '11111'
 
 @app.route('/')
 def home():
-    return render_template('home.html', user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', '') )
+    home_news_data = trending_api()
+    return render_template('home.html',home_news= home_news_data, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', '') )
 
 @app.route('/category/<category>')
 def category(category):
     if session.get('user_logged_in', False):
-        personalized_news_data = get_personalized_news(session.username, category)
+        personalized_news_data = user_based_rec_api(session['current_user'], category)
         return render_template('category.html', category=category, category_news= personalized_news_data, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''))
-    category_news_data = get_category_news_api(category)
+    category_news_data = trending_api(category)
     return render_template('category.html', category=category, category_news= category_news_data, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''))
 
 @app.route('/full_news/<news_id>')
-def full_news(news_id:str):
-    full_news_data = get_full_news(news_id)
-    content_recommendation_news = get_content_reccomendation(full_news_data.abstract)
+def full_news(news_id):
+    full_news_data = get_fullnews_api(news_id)
+    content_recommendation_news = content_based_rec_api(news_id= news_id)
     return render_template('full_news.html', full_news=full_news_data, news_id=news_id, content_recc=content_recommendation_news, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''))
 
-def get_next_news_id(current_news_id):
-    # implement logic
-    return
-
-def get_previous_news_id(current_news_id):
-    # implement logic
-    return
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -67,9 +65,9 @@ def logout():
     session.pop('current_user', None)
     return redirect(url_for('home'))
 
-@app.route('/personalized/<int:username>')
+@app.route('/personalized/<username>')
 def personalized(username, category=None):
-    personalized_news_data = get_personalized_news(username, category)
+    personalized_news_data = user_based_rec_api(username, category= category)
     return render_template('personalized.html', username=username, personalized_news=personalized_news_data, user_logged_in=session.get('user_logged_in', False), current_user=session.get('current_user', ''), category=category)
 
 

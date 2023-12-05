@@ -32,3 +32,9 @@ trending_api:
   news_data: artifacts/data_ingestion/news.tsv
   col_name: ["itemId","category","subcategory","title","abstract","url","title_entities","abstract_entities"]
   item2ind_json: artifacts/data_transformation/item2ind.json
+
+
+fullnews:
+  news_data: artifacts/data_ingestion/news.tsv
+  col_name: ["itemId","category","subcategory","title","abstract","url","title_entities","abstract_entities"]
+  item2ind_json: artifacts/data_transformation/ind2uitem.json

@@ -5,6 +5,16 @@
 {% block content %}
 
     <h1>Hello World!</h1>
-    <p>Select a category of your choice</p>
+    {% if home_news %}
+        {% for news in home_news %}
+            <div class="news-card">
+                <h2>{{ news.title}}</h2>
+                <p>{{ news.abstract }}</p>
+            </div>
+        {% endfor %}
+
+    {% else %}
+            <p>No News availiable</p>
+    {% endif %}
 
 {% endblock %}

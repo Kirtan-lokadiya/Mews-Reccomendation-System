@@ -37,3 +37,10 @@ class TrendingAPIConfig:
     news_data: Path
     col_name: list
     item2ind_json: Path
+
+
+@dataclass(frozen=True)
+class FullNewsConfig:
+    news_data: Path
+    col_name: list
+    item2ind_json: Path

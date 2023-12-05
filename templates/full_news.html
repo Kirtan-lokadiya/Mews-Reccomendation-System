@@ -7,27 +7,25 @@
 
     {% if full_news %}
         <div class="full-news-content">
-            <h2>{{ full_news.title }}</h2>
-            <p>{{ full_news.content }}</p>
+            <h2>{{ full_news[0].title }}</h2>
+            <p>{{ full_news[0].abstract }}</p>
         </div>
 
-        <div class="navigation-buttons">
-            <a href="{{ url_for('full_news', news_id=get_previous_news_id(news_id)) }}">Previous</a>
-            <a href="{{ url_for('full_news', news_id=get_next_news_id(news_id)) }}">Next</a>
-        </div>
-
+        <h3>Also Reccomended</h3>
         <div class="'Content Reccomendation">
             {% if content_recc %}
                 {% for news in content_recc %}
                     <div class="news-card">
                         <h2>{{ news.title }}</h2>
                         <p>{{ news.abstract }}</p>
-                        <a href="{{ url_for('full_news', news_id=news.id) }}">Read more</a>
+                        <a href="{{ url_for('full_news', news_id=news.news_id) }}">Read more</a>
                     </div>
                 {% endfor %}
+                {% endif %}
         </div>
     {% else %}
         <p>No news here</p>
     {% endif %}
+
 {% endblock %}
 
