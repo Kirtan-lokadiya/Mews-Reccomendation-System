@@ -15,7 +15,7 @@ from News_Reccomendation_System.pipeline.step6_fullnews_api import get_fullnews_
 #     return
 
 
-users = {'U8125':'12345', 'user2':'12345'}
+users = {'U8125':'12345', 'U89744':'12345'}
 
 
 

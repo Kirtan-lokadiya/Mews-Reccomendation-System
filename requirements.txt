@@ -3,9 +3,7 @@ numpy
 ktrain
 torch
 pytorch_lightning
-streamlit
-mlflow == 2.2.2
-dvc
+Flask
 python-box==6.0.2
 pyYAML
 tqdm
