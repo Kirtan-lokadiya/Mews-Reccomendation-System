@@ -14,3 +14,19 @@ after reading the news, then user will get further reccomendations based on the 
 We will have to call the prediction API accordingly,
 the prediction APIs are present in :
 src/News_Reccomendation_System/pipeline/step4_prediction.py
+
+
+# how to run
+
+```bash
+git clone (this repo)
+```
+```bash
+docker build -t app .
+```
+```bash
+docker run -d -p 80:5000 app```
+
+Then go to localhost:80/
+
+## voila it works 
